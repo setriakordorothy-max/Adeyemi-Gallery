@@ -399,16 +399,23 @@ if (form && formSuccess) {
             submittedAt: new Date().toISOString()
         };
 
-        const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+       const { error } = await supabase
+  .from("contacts")
+  .insert([
+    {
+      name: entry.name,
+      phone: entry.phone,
+      email: entry.email
+    }
+  ]);
 
-        existing.push(entry);
+if (error) {
+  alert(error.message);
+  return;
+}
 
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
-        localStorage.setItem(SUBMITTED_KEY, "true");
-
-        form.reset();
-
-        showSuccess();
+form.reset();
+showSuccess();
 
     });
 
