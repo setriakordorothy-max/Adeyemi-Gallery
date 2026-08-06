@@ -1,7 +1,7 @@
 /*=========================================
 PRELOADER
 =========================================*/
-const SUPABASE_URL = "https://clrulnqpblazshugvhfj.supabase.co/rest/v1/";
+const SUPABASE_URL = "https://clrulnqpblazshugvhfj.supabase.co";";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNscnVsbnFwYmxhenNodWd2aGZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU1MTEwNDEsImV4cCI6MjEwMTA4NzA0MX0.7FB98w9zMCYAXgZhdWS4jabYN36i7sV58BZ0fPwB1lY";
 
 const supabase = window.supabase.createClient(
