@@ -381,7 +381,7 @@ if (form && formSuccess) {
 
     });
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
 
         e.preventDefault();
 
