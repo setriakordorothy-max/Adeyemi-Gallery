@@ -1,7 +1,13 @@
 /*=========================================
 PRELOADER
 =========================================*/
+const SUPABASE_URL = "https://supabase.com/dashboard/project/clrulnqpblazshugvhfj";
+const SUPABASE_ANON_KEY = "+HH#Ccd&Cx_$42";
 
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 window.addEventListener("load", () => {
 
     document.body.classList.add("loaded");
