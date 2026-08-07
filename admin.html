@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdéyẹmiGallery | Admin</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Supabase (only needed on this page) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // ==== Use the SAME values you put in contact.html ====
+        window.SUPABASE_URL = "https://aqqhsthfozwcwooqyxwh.supabase.co";
+        window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFxcWhzdGhmb3p3Y3dvb3F5eHdoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwNzI5NDcsImV4cCI6MjEwMTY0ODk0N30.QF9e4sKFHXoZR5rjJ-XPyHAFFqDEPWmhB80hVMjdD9I";
+    </script>
+</head>
+
+<body class="admin-page">
+
+<!--================ NAVIGATION ================-->
+
+<header>
+
+<div class="logo">
+    <i class="fa-solid fa-palette"></i>
+    AdéyẹmiGallery Admin
+</div>
+
+</header>
+
+<!--================ LOGIN SCREEN ================-->
+
+<div id="loginScreen">
+
+<div class="login-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<h2>Admin Login</h2>
+
+<div class="form-group">
+<label for="loginEmail">Email</label>
+<input type="email" id="loginEmail" placeholder="you@example.com">
+</div>
+
+<div class="form-group">
+<label for="loginPassword">Password</label>
+<input type="password" id="loginPassword" placeholder="Your password">
+</div>
+
+<button class="btn" id="loginBtn" style="width:100%;justify-content:center;">
+<i class="fa-solid fa-right-to-bracket"></i>
+Log In
+</button>
+
+<p class="admin-status-msg error" id="loginError"></p>
+
+</div>
+
+</div>
+
+<!--================ DASHBOARD (hidden until logged in) ================-->
+
+<div id="dashboard" class="admin-hidden">
+
+<div class="admin-bar">
+<h1>Dashboard</h1>
+<button class="logout-btn" id="logoutBtn">
+<i class="fa-solid fa-right-from-bracket"></i>
+Log Out
+</button>
+</div>
+
+<div class="admin-tabs">
+<button class="admin-tab-btn active" data-tab="artworksTab">
+<i class="fa-solid fa-images"></i> Artworks
+</button>
+<button class="admin-tab-btn" data-tab="messagesTab">
+<i class="fa-solid fa-comment-sms"></i> Messages
+</button>
+</div>
+
+<!--================ ARTWORKS TAB ================-->
+
+<div id="artworksTab" class="admin-panel">
+
+<div class="add-artwork-box">
+
+<h3><i class="fa-solid fa-plus"></i> Add New Artwork</h3>
+
+<div class="admin-form-grid">
+
+<div>
+<label>Title</label>
+<input type="text" id="newTitle" placeholder="e.g. Golden Savannah">
+</div>
+
+<div>
+<label>Price (GH₵)</label>
+<input type="number" id="newPrice" placeholder="e.g. 450">
+</div>
+
+<div>
+<label>Image URL</label>
+<input type="text" id="newImageUrl" placeholder="https://... or ./images/yourfile.jpg">
+</div>
+
+<div>
+<label>Category</label>
+<select id="newCategory">
+<option value="painting">Painting</option>
+<option value="drawing">Drawing</option>
+<option value="mixed">Mixed Media</option>
+</select>
+</div>
+
+<div class="full-width">
+<label>Description</label>
+<textarea id="newDescription" rows="3" placeholder="Short description shown under the title"></textarea>
+</div>
+
+</div>
+
+<button class="btn" id="addArtworkBtn" style="margin-top:20px;">
+<i class="fa-solid fa-plus"></i>
+Add Artwork
+</button>
+
+<p class="admin-status-msg" id="addArtworkStatus"></p>
+
+</div>
+
+<div class="admin-artwork-grid" id="artworkGrid">
+<!-- artwork edit cards injected here -->
+</div>
+
+</div>
+
+<!--================ MESSAGES TAB ================-->
+
+<div id="messagesTab" class="admin-panel admin-hidden">
+
+<div class="enquiry-list" id="enquiryList">
+<div class="select-all-row">
+<input type="checkbox" id="selectAllEnquiries">
+<span>Select All</span>
+</div>
+<!-- enquiry rows injected here -->
+</div>
+
+<div class="sms-compose">
+
+<h3 style="font-family:'Cinzel',serif;color:var(--accent);margin-bottom:15px;">
+<i class="fa-solid fa-paper-plane"></i> Compose SMS
+</h3>
+
+<textarea id="smsMessage" placeholder="Type the message to send to selected people..." maxlength="480"></textarea>
+
+<div class="char-count"><span id="smsCharCount">0</span> / 480</div>
+
+<button class="btn" id="sendSmsBtn">
+<i class="fa-solid fa-paper-plane"></i>
+Send SMS to Selected (<span id="selectedCount">0</span>)
+</button>
+
+<p class="admin-status-msg" id="smsStatus"></p>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>
